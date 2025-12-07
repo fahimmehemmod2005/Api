@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -8,6 +10,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  Future<dynamic> getApiData () async {
+    try{
+  final url = 'https://rihanna-preacquisitive-eleanore.ngrok-free.dev/api/cars/';
+  final response = await http.get(Uri.parse(url));
+
+  var data = jsonDecode(response.body);
+  print(data);
+
+  return data;
+
+  }catch(e){
+      rethrow;
+  }
+}
+
+@override
+  void initState() {
+    // TODO: implement initState
+  getApiData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
