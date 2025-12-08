@@ -10,7 +10,7 @@ class CarDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.deepOrange,
         title: Text(car.modelName ?? 'Car Details'),
       ),
       body: SingleChildScrollView(
@@ -20,7 +20,7 @@ class CarDetailsPage extends StatelessWidget {
           children: [
             // Car Basic Info
             _buildSection(
-              title: '🚗 CAR DETAILS',
+              title: 'CAR DETAILS',
               child: Column(
                 children: [
                   _buildDataRow('ID', car.id),
@@ -36,13 +36,16 @@ class CarDetailsPage extends StatelessWidget {
             if (car.manufacturer != null) ...[
               const SizedBox(height: 16),
               _buildSection(
-                title: '🏭 MANUFACTURER',
+                title: 'MANUFACTURER',
                 child: Column(
                   children: [
                     _buildDataRow('ID', car.manufacturer!.id),
                     _buildDataRow('Name', car.manufacturer!.name),
                     _buildDataRow('Country', car.manufacturer!.country),
-                    _buildDataRow('Founded Year', car.manufacturer!.foundedYear?.toString()),
+                    _buildDataRow(
+                      'Founded Year',
+                      car.manufacturer!.foundedYear?.toString(),
+                    ),
                   ],
                 ),
               ),
@@ -52,7 +55,7 @@ class CarDetailsPage extends StatelessWidget {
             if (car.owner != null) ...[
               const SizedBox(height: 16),
               _buildSection(
-                title: '👤 OWNER',
+                title: 'OWNER',
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -63,7 +66,8 @@ class CarDetailsPage extends StatelessWidget {
                     _buildDataRow('Phone', car.owner!.phoneNumber),
 
                     // Owner Occupations
-                    if (car.owner!.occupations != null && car.owner!.occupations!.isNotEmpty) ...[
+                    if (car.owner!.occupations != null &&
+                        car.owner!.occupations!.isNotEmpty) ...[
                       const SizedBox(height: 12),
                       const Text(
                         'Occupations:',
@@ -98,7 +102,11 @@ class CarDetailsPage extends StatelessWidget {
                               const SizedBox(height: 4),
                               _buildDataRow('ID', occ.id, compact: true),
                               _buildDataRow('Title', occ.title, compact: true),
-                              _buildDataRow('Description', occ.description, compact: true),
+                              _buildDataRow(
+                                'Description',
+                                occ.description,
+                                compact: true,
+                              ),
                             ],
                           ),
                         );
@@ -113,7 +121,7 @@ class CarDetailsPage extends StatelessWidget {
             if (car.engines != null && car.engines!.isNotEmpty) ...[
               const SizedBox(height: 16),
               _buildSection(
-                title: '⚙️ ENGINES (${car.engines!.length})',
+                title: 'ENGINES (${car.engines!.length})',
                 child: Column(
                   children: car.engines!.asMap().entries.map((entry) {
                     final engineIndex = entry.key;
@@ -124,7 +132,10 @@ class CarDetailsPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.blue.shade300, width: 2),
+                        border: Border.all(
+                          color: Colors.blue.shade300,
+                          width: 2,
+                        ),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade300,
@@ -137,7 +148,10 @@ class CarDetailsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 6,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               borderRadius: BorderRadius.circular(6),
@@ -154,8 +168,14 @@ class CarDetailsPage extends StatelessWidget {
                           const SizedBox(height: 12),
                           _buildDataRow('ID', engine.id),
                           _buildDataRow('Name', engine.name),
-                          _buildDataRow('Displacement', engine.displacement?.toString()),
-                          _buildDataRow('Horsepower', engine.horsepower?.toString()),
+                          _buildDataRow(
+                            'Displacement',
+                            engine.displacement?.toString(),
+                          ),
+                          _buildDataRow(
+                            'Horsepower',
+                            engine.horsepower?.toString(),
+                          ),
 
                           // Brand Info
                           if (engine.brand != null) ...[
@@ -177,9 +197,21 @@ class CarDetailsPage extends StatelessWidget {
                               ),
                               child: Column(
                                 children: [
-                                  _buildDataRow('ID', engine.brand!.id, compact: true),
-                                  _buildDataRow('Name', engine.brand!.name, compact: true),
-                                  _buildDataRow('Headquarters', engine.brand!.headquarters, compact: true),
+                                  _buildDataRow(
+                                    'ID',
+                                    engine.brand!.id,
+                                    compact: true,
+                                  ),
+                                  _buildDataRow(
+                                    'Name',
+                                    engine.brand!.name,
+                                    compact: true,
+                                  ),
+                                  _buildDataRow(
+                                    'Headquarters',
+                                    engine.brand!.headquarters,
+                                    compact: true,
+                                  ),
 
                                   // Origin Info
                                   if (engine.brand!.origin != null) ...[
@@ -201,10 +233,18 @@ class CarDetailsPage extends StatelessWidget {
                                       ),
                                       child: Column(
                                         children: [
-                                          _buildDataRow('ID', engine.brand!.origin!.id, compact: true),
+                                          _buildDataRow(
+                                            'ID',
+                                            engine.brand!.origin!.id,
+                                            compact: true,
+                                          ),
 
                                           // Destination Info
-                                          if (engine.brand!.origin!.destination != null) ...[
+                                          if (engine
+                                                  .brand!
+                                                  .origin!
+                                                  .destination !=
+                                              null) ...[
                                             const Divider(height: 16),
                                             const Text(
                                               'Destination:',
@@ -219,14 +259,49 @@ class CarDetailsPage extends StatelessWidget {
                                               padding: const EdgeInsets.all(10),
                                               decoration: BoxDecoration(
                                                 color: Colors.purple.shade50,
-                                                borderRadius: BorderRadius.circular(8),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
                                               ),
                                               child: Column(
                                                 children: [
-                                                  _buildDataRow('ID', engine.brand!.origin!.destination!.id, compact: true),
-                                                  _buildDataRow('Country', engine.brand!.origin!.destination!.country, compact: true),
-                                                  _buildDataRow('Latitude', engine.brand!.origin!.destination!.latitude?.toString(), compact: true),
-                                                  _buildDataRow('Longitude', engine.brand!.origin!.destination!.longitude?.toString(), compact: true),
+                                                  _buildDataRow(
+                                                    'ID',
+                                                    engine
+                                                        .brand!
+                                                        .origin!
+                                                        .destination!
+                                                        .id,
+                                                    compact: true,
+                                                  ),
+                                                  _buildDataRow(
+                                                    'Country',
+                                                    engine
+                                                        .brand!
+                                                        .origin!
+                                                        .destination!
+                                                        .country,
+                                                    compact: true,
+                                                  ),
+                                                  _buildDataRow(
+                                                    'Latitude',
+                                                    engine
+                                                        .brand!
+                                                        .origin!
+                                                        .destination!
+                                                        .latitude
+                                                        ?.toString(),
+                                                    compact: true,
+                                                  ),
+                                                  _buildDataRow(
+                                                    'Longitude',
+                                                    engine
+                                                        .brand!
+                                                        .origin!
+                                                        .destination!
+                                                        .longitude
+                                                        ?.toString(),
+                                                    compact: true,
+                                                  ),
                                                 ],
                                               ),
                                             ),
@@ -252,7 +327,10 @@ class CarDetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSection({required String title, required Widget child}) {
+  Widget _buildSection({
+    required String title,
+    required Widget child
+  }) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -288,16 +366,18 @@ class CarDetailsPage extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: child,
-          ),
+          Padding(padding: const EdgeInsets.all(16), child: child),
         ],
       ),
     );
   }
 
-  Widget _buildDataRow(String label, String? value, {bool compact = false}) {
+  Widget _buildDataRow(
+      String label,
+      String? value,
+      {
+        bool compact = false
+      }) {
     return Padding(
       padding: EdgeInsets.only(bottom: compact ? 6 : 8),
       child: Row(
