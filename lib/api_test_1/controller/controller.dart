@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:api/data_model.dart';
+import 'package:api/api_test_1/model/data_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 

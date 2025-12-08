@@ -1,10 +1,10 @@
-import 'package:api/car_details.dart';
-import 'package:api/controller.dart';
+import 'package:api/api_test_1/view/car_details_view.dart';
+import 'package:api/api_test_1/controller/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeView1 extends StatelessWidget {
+  const HomeView1({super.key});
 
   @override
   Widget build(BuildContext context) {

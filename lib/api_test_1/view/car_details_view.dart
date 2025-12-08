@@ -1,4 +1,4 @@
-import 'package:api/data_model.dart';
+import 'package:api/api_test_1/model/data_model.dart';
 import 'package:flutter/material.dart';
 
 class CarDetailsPage extends StatelessWidget {

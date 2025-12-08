@@ -1,6 +1,7 @@
+import 'package:api/api_test_2/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'home_page.dart';
+import 'api_test_1/view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       title: 'Demo Api',
-      home: HomePage(),
+      // home: HomeView1(),
+      home: HomeView2(),
     );
   }
 }
