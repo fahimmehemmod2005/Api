@@ -1,4 +1,5 @@
 import 'package:api/api_test_2/view/home_view.dart';
+import 'package:api/api_test_3/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'api_test_1/view/home_view.dart';
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: true,
       title: 'Demo Api',
-      // home: HomeView1(),
-      home: HomeView2(),
+      // home: const HomeView1(),
+      // home: const HomeView2(),
+      home: const HomeView3(),
     );
   }
 }
