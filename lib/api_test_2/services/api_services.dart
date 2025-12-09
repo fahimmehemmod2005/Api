@@ -12,7 +12,7 @@ class ApiServices2 {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         SinglePostWithModel model = SinglePostWithModel.fromJson(
-          jsonDecode(response.body),
+          json.decode(response.body),
         );
 
         return model;

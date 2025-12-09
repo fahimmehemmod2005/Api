@@ -11,7 +11,7 @@ class ApiServices3 {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         List<PostModel> model = List<PostModel>.from(
-          jsonDecode(response.body).map((x) => PostModel.fromJson(x)),
+          json.decode(response.body).map((x) => PostModel.fromJson(x)),
         );
         return model;
       }

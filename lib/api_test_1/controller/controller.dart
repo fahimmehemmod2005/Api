@@ -24,7 +24,7 @@ class CarController extends GetxController {
       final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
-        var jsonData = jsonDecode(response.body);
+        var jsonData = json.decode(response.body);
 
         List<Data> loadedCars = [];
         for (var item in jsonData) {
