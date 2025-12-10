@@ -102,10 +102,7 @@ class CarDetailsPage extends StatelessWidget {
                               const SizedBox(height: 4),
                               _buildDataRow('ID', occ.id, compact: true),
                               _buildDataRow('Title', occ.title, compact: true),
-                              _buildDataRow(
-                                'Description',
-                                occ.description,
-                                compact: true,
+                              _buildDataRow('Description', occ.description, compact: true,
                               ),
                             ],
                           ),
@@ -327,10 +324,7 @@ class CarDetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSection({
-    required String title,
-    required Widget child
-  }) {
+  Widget _buildSection({required String title, required Widget child}) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -372,12 +366,7 @@ class CarDetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDataRow(
-      String label,
-      String? value,
-      {
-        bool compact = false
-      }) {
+  Widget _buildDataRow(String label, String? value, {bool compact = false}) {
     return Padding(
       padding: EdgeInsets.only(bottom: compact ? 6 : 8),
       child: Row(

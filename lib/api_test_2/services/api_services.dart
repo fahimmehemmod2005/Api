@@ -9,7 +9,12 @@ class ApiServices2 {
       var response = await http.get(
         Uri.parse("https://jsonplaceholder.typicode.com/posts/1"),
       );
+      if(response.statusCode == 200 || response.statusCode == 201){
+        print('Success');
+      }
 
+      print("Response code: ${response.statusCode}");
+      print("Response code: ${response.body}");
       if (response.statusCode == 200 || response.statusCode == 201) {
         SinglePostWithModel model = SinglePostWithModel.fromJson(
           json.decode(response.body),

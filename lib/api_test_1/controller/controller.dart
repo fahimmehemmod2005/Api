@@ -23,6 +23,13 @@ class CarController extends GetxController {
           'https://rihanna-preacquisitive-eleanore.ngrok-free.dev/api/cars/';
       final response = await http.get(Uri.parse(url));
 
+      if(response.statusCode == 200 || response.statusCode == 201){
+        print('Success');
+      }
+
+      print("Response code: ${response.statusCode}");
+      print("Response code: ${response.body}");
+
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
 

@@ -1,62 +1,62 @@
-import 'package:api/api_test_4/model/multi_data_api.dart';
-import 'package:api/api_test_4/services/api_services.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controller/controller.dart';
 
-class HomeView4 extends StatefulWidget {
+class HomeView4 extends StatelessWidget {
   const HomeView4({super.key});
 
   @override
-  State<HomeView4> createState() => _HomeView4State();
-}
-
-class _HomeView4State extends State<HomeView4> {
-
-  MultiData multiData = MultiData();
-  bool isReady = false;
-  _getMultiData(){
-     isReady = true;
-    ApiServices4().getMultiDataWithModel().then((value){
-      setState(() {
-        multiData = value!;
-         isReady = false;
-      });
-    }).onError((error, stackTrack){
-      print(error);
-    });
-  }
-
-  @override
-  void initState() {
-    _getMultiData();
-    super.initState();
-  }
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Multi Data Api'),backgroundColor: Colors.deepOrange),
+    final MultiDataController controller = Get.put(MultiDataController());
 
-      body: isReady == true
-        ? const Center(child: CircularProgressIndicator())
-        :Column(
-        children: [
-          Text(multiData.page.toString(), style: const TextStyle(color: Colors.teal, fontSize: 18),),
-          Text(multiData.total.toString(), style: const TextStyle(color: Colors.teal, fontSize: 18),),
-          Text(multiData.totalPages.toString(), style: const  TextStyle(color: Colors.teal, fontSize: 18),),
-          Text(multiData.support!.text.toString(), style: const TextStyle(color: Colors.teal, fontSize: 18),),
-          Expanded(
-            child: ListView.builder(
-              itemCount: multiData.data!.length,
-              itemBuilder: (_, i){
-                return Card(
-                  child: ListTile(
-                    title: Text(multiData.data![i].name.toString()),
-                    subtitle: Text(multiData.data![i].pantoneValue.toString()),
-                  ),
-                );
-              },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Multi Data Api'),
+        backgroundColor: Colors.deepOrange,
+      ),
+      body: Obx(
+            () => controller.isReady.value
+            ? const Center(child: CircularProgressIndicator())
+            : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              controller.multiData.value.page.toString(),
+              style: const TextStyle(color: Colors.teal, fontSize: 18),
             ),
-          ),
-        ],
+            Text(
+              controller.multiData.value.total.toString(),
+              style: const TextStyle(color: Colors.teal, fontSize: 18),
+            ),
+            Text(
+              controller.multiData.value.totalPages.toString(),
+              style: const TextStyle(color: Colors.teal, fontSize: 18),
+            ),
+            Text(
+              controller.multiData.value.support!.text.toString(),
+              style: const TextStyle(color: Colors.teal, fontSize: 18),
+            ),Text(
+              controller.multiData.value.support!.url.toString(),
+              style: const TextStyle(color: Colors.teal, fontSize: 18),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: controller.multiData.value.data!.length,
+                itemBuilder: (_, i) {
+                  return Card(
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blueAccent,
+                        child: Text(controller.multiData.value.data![i].id.toString()),),
+                      title: Text(controller.multiData.value.data![i].name.toString()),
+                      subtitle: Text(controller.multiData.value.data![i].pantoneValue.toString()),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

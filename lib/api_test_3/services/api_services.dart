@@ -8,6 +8,12 @@ class ApiServices3 {
       var response = await http.get(
         Uri.parse('https://jsonplaceholder.typicode.com/posts'),
       );
+      if(response.statusCode == 200 || response.statusCode == 201){
+        print('Success');
+      }
+
+      print("Response code: ${response.statusCode}");
+      print("Response code: ${response.body}");
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         List<PostModel> model = List<PostModel>.from(
