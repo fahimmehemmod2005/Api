@@ -1,7 +1,10 @@
-import 'package:api/api_test_4/view/home_view.dart';
+
 import 'package:api/api_test_5/view/Login_view.dart';
+import 'package:api/api_test_6/view/login_view.dart';
+import 'package:api/api_test_7/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:api/api_test_4/view/home_view.dart';
 import 'api_test_1/view/home_view.dart';
 import 'api_test_2/view/home_view.dart';
 import 'api_test_3/view/home_view.dart';
@@ -23,7 +26,9 @@ class MyApp extends StatelessWidget {
       // home: const HomeView2(),
       // home: const HomeView3(),
       // home: const HomeView4(),
-       home: const LoginView1(),
+      //  home: const LoginView1(),
+      //  home: const LoginView2(),
+       home: const LoginView3(),
     );
   }
 }

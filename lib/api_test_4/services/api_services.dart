@@ -13,7 +13,7 @@ class ApiServices4 {
         print('Success');
       }
       print("Response code: ${response.statusCode}");
-      print("Response code: ${response.body}");
+      print("Response body: ${response.body}");
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         MultiData model = MultiData.fromJson(json.decode(response.body));
