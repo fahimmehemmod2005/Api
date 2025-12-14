@@ -29,11 +29,11 @@ class _LoginView3State extends State<LoginView3> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              controller: email,
+              controller: email, /// eve.holt@reqres.in
               decoration: InputDecoration(hintText: 'Enter email'),
             ),
             TextFormField(
-              controller: password,
+              controller: password, /// cityslicka
               decoration: InputDecoration(hintText: 'Enter password'),
             ),
             SizedBox(height: 10),

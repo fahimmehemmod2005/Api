@@ -14,6 +14,7 @@ class ApiServices7 {
       print('Status code: ${response.statusCode}');
       print('Header: ${response.headers}');
       print('Body: ${response.body}');
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         RegisterModel model = RegisterModel.fromJson(jsonDecode(response.body));
         return model;
